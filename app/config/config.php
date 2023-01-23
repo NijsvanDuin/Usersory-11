@@ -2,10 +2,10 @@
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
-define('DB_NAME', 'BE-toets-MVC');
+define('DB_NAME', 'be-userstory-1');
 
 define('APPROOT', dirname(dirname(__FILE__)));
 
-define('URLROOT', 'http://www.mvc-oop-pdo-toets-userstory.com');
+define('URLROOT', 'http://www.be-userstorys-p3.local');
 
-define('SITENAME', 'MVC Framework Toets');
+define('SITENAME', 'MVC Framework Userstory 1');
