@@ -1,6 +1,7 @@
 <?php require(APPROOT . '/views/includes/header.php') ?>
-<?= $data['title'] ?>
-<h3 class=""></h3>
+<h1><?= $data['title'] ?></h1>
+
+<h3>Aantal Instrecteur: <?= $data['aantalInstrecteur'] ?></h3>
 <table border="1">
     <thead>
         <th>Voornaam</th>

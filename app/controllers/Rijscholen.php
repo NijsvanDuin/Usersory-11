@@ -27,7 +27,8 @@ class Rijscholen extends Controller
         }
         $data = [
             'title' => "Instrecteur in dienst",
-            'rows' => $rows
+            'rows' => $rows,
+            'aantalInstrecteur' => '5'
         ];
         $this->view('rijschool/index', $data);
     }
