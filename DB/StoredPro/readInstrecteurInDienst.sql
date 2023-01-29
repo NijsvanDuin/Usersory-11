@@ -6,5 +6,6 @@ SELECT ins.Voornaam,
     ins.Mobiel,
     ins.DatumInDienst,
     ins.AantalSterren
-    FROM Instructeur AS ins;
+    FROM Instructeur AS ins
+    ORDER BY ins.AantalSterren DESC;
 END

@@ -22,7 +22,7 @@ class Rijscholen extends Controller
             <td>$info->Mobiel</td>
             <td>$info->DatumInDienst</td>
             <td>$info->AantalSterren</td>
-            <td><a href='" . URLROOT . "/rijschool/readVoertuig'><img src='" . URLROOT . "/img/b_help.png' alt='topic'></a></td>
+            <td><a href='" . URLROOT . "/rijscholen/readVoertuig/$info->Id'><img src='" . URLROOT . "/img/b_help.png' alt='topic'></a></td>
             </tr>";;
         }
         $data = [
@@ -31,5 +31,38 @@ class Rijscholen extends Controller
             'aantalInstrecteur' => '5'
         ];
         $this->view('rijschool/index', $data);
+    }
+
+    public function readVoertuig($id)
+    {
+        $istrecteur = $this->rijschoolModel->getInstrecteurById($id);
+        $voertuigen = $this->rijschoolModel->getAutoById($id);
+        $rows = '';
+        if (empty($voertuigen)) {
+            $rows = "Op dit moment heeft de instrecteur geen voertuigen in gebruik.";
+        } else {
+            foreach ($voertuigen as $info) {
+                $rows .= "
+                <tr>
+                <td>$info->TypeVoertuig</td>
+                <td>$info->Type</td>
+                <td>$info->Kenteken</td>
+                <td>$info->Bouwjaar</td>
+                <td>$info->Brandstof</td>
+                <td>$info->Rijbewijscategorie</td>
+                </tr>";;
+            }
+        }
+
+        $data = [
+            'title' => "Door Instrecteur gebruikte voertuigen",
+            'voornaam' => $istrecteur->Voornaam,
+            'tussenvoegsel' => $istrecteur->Tussenvoegsel,
+            'achternaam' => $istrecteur->Achternaam,
+            'datumInDienst' => $istrecteur->DatumInDienst,
+            'aantalSterren' => $istrecteur->AantalSterren,
+            'rows' => $rows
+        ];
+        $this->view('rijschool/readVoertuig', $data);
     }
 }
