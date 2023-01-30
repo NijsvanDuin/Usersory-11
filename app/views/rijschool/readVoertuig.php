@@ -6,7 +6,7 @@
 <h3>Aantal Sterren: <?= $data['aantalSterren'] ?></h3> <br>
 
 <button><a href='/rijscholen/addVoertuig/<?= $data['instucteurId'] ?>'>Toevoegen Voertuig</a></button>
-<br>
+<br><br>
 
 <table border="1">
     <thead>

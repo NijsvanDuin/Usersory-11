@@ -37,6 +37,7 @@ class Rijscholen extends Controller
     {
         $istrecteur = $this->rijschoolModel->getInstrecteurById($id);
         $voertuigen = $this->rijschoolModel->getAutoById($id);
+        var_dump($voertuigen);
         $rows = '';
         if (empty($voertuigen)) {
             $rows = "Op dit moment heeft de instrecteur geen voertuigen in gebruik.";
@@ -71,6 +72,7 @@ class Rijscholen extends Controller
         $istrecteur = $this->rijschoolModel->getInstrecteurById($id);
         $voertuig = $this->rijschoolModel->getVoertuigById($id);
         $rows = "";
+        var_dump($voertuig);
         foreach ($voertuig as $info) {
             $rows .= "
             <tr>
@@ -80,7 +82,7 @@ class Rijscholen extends Controller
             <td>$info->Bouwjaar</td>
             <td>$info->Brandstof</td>
             <td>$info->Rijbewijscategorie</td>
-            <td><a href='" . URLROOT . "/rijscholen/readVoertuig/$info->Id'><img src='" . URLROOT . "/img/b_report.png' alt='topic'></a></td>
+            <td><a href='" . URLROOT . "/rijscholen/addVoertuigInstucteur/$info->Id/$istrecteur->Id'><img src='" . URLROOT . "/img/b_report.png' alt='topic'></a></td>
             </tr>";;
         }
         $data = [
@@ -90,6 +92,15 @@ class Rijscholen extends Controller
             'achternaam' => $istrecteur->Achternaam,
             'datumInDienst' => $istrecteur->DatumInDienst,
             'aantalSterren' => $istrecteur->AantalSterren,
+            'rows' => $rows
+        ];
+        $this->view('rijschool/addVoertuig', $data);
+    }
+    public function addVoertuigInstucteur($insId, $voeId)
+    {
+        $istrecteur = $this->rijschoolModel->addVoertuig($insId, $voeId);
+        $rows = "";
+        $data = [
             'rows' => $rows
         ];
         $this->view('rijschool/addVoertuig', $data);

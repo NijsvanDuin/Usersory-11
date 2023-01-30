@@ -52,7 +52,8 @@ class Rijschool
     public function getVoertuigById($id)
     {
         try {
-            $this->db->query("SELECT *
+            $this->db->query("Select Voertuig.Id, Voertuig.Kenteken, Voertuig.Bouwjaar, Voertuig.Brandstof, TypeVoertuig.TypeVoertuig, Voertuig.Type, TypeVoertuig.Rijbewijscategorie
+
             From Voertuig
             Inner join TypeVoertuig
             on Voertuig.TypeVoertuigId = TypeVoertuig.Id
@@ -63,5 +64,12 @@ class Rijschool
         } catch (PDOException $ex) {
             $ex->getMessage();
         }
+    }
+    public function addVoertuig($insId, $voeId)
+    {
+        $this->db->query("Insert into VoertuigInstructeur (Id,InstructeurId, VoertuigId,DatumToegevoegt) values (NULL,:instructeurId, :voertuigId,'2023-01-30')");
+        $this->db->bind(':instructeurId', $insId);
+        $this->db->bind(':voertuigId', $voeId);
+        return $this->db->execute();
     }
 }
