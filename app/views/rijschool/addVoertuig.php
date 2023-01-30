@@ -15,7 +15,7 @@
         <th>Toevoegen</th>
     </thead>
     <tbody>
-        <!-- ?php echo $data['rows'] ?> -->
+        <?= $data['rows'] ?>
     </tbody>
 </table>
 <?php require(APPROOT . '/views/includes/footer.php') ?>

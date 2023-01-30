@@ -49,4 +49,19 @@ class Rijschool
             $ex->getMessage();
         }
     }
+    public function getVoertuigById($id)
+    {
+        try {
+            $this->db->query("SELECT *
+            From Voertuig
+            Inner join TypeVoertuig
+            on Voertuig.TypeVoertuigId = TypeVoertuig.Id
+            Where Voertuig.Id not in (select VoertuigInstructeur.VoertuigId from VoertuigInstructeur where VoertuigInstructeur.InstructeurId = :id)
+            ");
+            $this->db->bind(':id', $id);
+            return $this->db->resultSet();
+        } catch (PDOException $ex) {
+            $ex->getMessage();
+        }
+    }
 }
