@@ -40,7 +40,8 @@ class Rijschool
             ON VoertuigInstructeur.InstructeurId = Instructeur.Id 
             INNER JOIN TypeVoertuig
             ON Voertuig.TypeVoertuigId = TypeVoertuig.Id
-            WHERE VoertuigInstructeur.InstructeurId = :id;
+            WHERE VoertuigInstructeur.InstructeurId = :id 
+            ORDER BY TypeVoertuig.Rijbewijscategorie ASC;
             ");
             $this->db->bind(':id', $id);
             return $this->db->resultSet();

@@ -38,6 +38,7 @@ class Rijscholen extends Controller
         $istrecteur = $this->rijschoolModel->getInstrecteurById($id);
         $voertuigen = $this->rijschoolModel->getAutoById($id);
         $rows = '';
+        var_dump($voertuigen);
         if (empty($voertuigen)) {
             $rows = "Op dit moment heeft de instrecteur geen voertuigen in gebruik.";
         } else {
@@ -61,8 +62,23 @@ class Rijscholen extends Controller
             'achternaam' => $istrecteur->Achternaam,
             'datumInDienst' => $istrecteur->DatumInDienst,
             'aantalSterren' => $istrecteur->AantalSterren,
+            'instucteurId' => $istrecteur->Id,
             'rows' => $rows
         ];
         $this->view('rijschool/readVoertuig', $data);
+    }
+    public function addVoertuig($id)
+    {
+        $istrecteur = $this->rijschoolModel->getInstrecteurById($id);
+        var_dump($istrecteur);
+        $data = [
+            'title' => "Alle beschikbaare voeruigen",
+            'voornaam' => $istrecteur->Voornaam,
+            'tussenvoegsel' => $istrecteur->Tussenvoegsel,
+            'achternaam' => $istrecteur->Achternaam,
+            'datumInDienst' => $istrecteur->DatumInDienst,
+            'aantalSterren' => $istrecteur->AantalSterren
+        ];
+        $this->view('rijschool/addVoertuig', $data);
     }
 }
