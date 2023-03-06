@@ -5,3 +5,4 @@
 <a href="<?= URLROOT; ?>/wagenparken/index"> Overzicht Wagenpark</a> <br>
 <a href="<?= URLROOT; ?>/mankementen/index"> Overzicht Mankementen</a> <br>
 <a href="<?= URLROOT; ?>/Rijscholen/index"> Overzicht Instrecteur</a>
+<p> <?= $data["sumtext"]; ?> </p>

@@ -67,7 +67,7 @@ class Rijschool
     }
     public function addVoertuig($insId, $voeId)
     {
-        $this->db->query("Insert into VoertuigInstructeur (Id,InstructeurId, VoertuigId,DatumToegevoegt) values (NULL,:instructeurId, :voertuigId,'2023-01-30')");
+        $this->db->query("Insert into VoertuigInstructeur (Id,InstructeurId, VoertuigId,DatumAangemaakt) values (NULL,:instructeurId, :voertuigId,'2023-01-30')");
         $this->db->bind(':instructeurId', $insId);
         $this->db->bind(':voertuigId', $voeId);
         return $this->db->execute();
